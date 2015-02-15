@@ -1,0 +1,16 @@
+{
+    "contents" : "\n# What do you do when ghosts of old pieces of code come back to haunt you?\n# That's right, copy-paste from yourself!\n\n\n#Same as previous exercise\ndata = read.table(file.choose(),header=TRUE,na.strings=\"?\",sep=\";\")\ngoodDate = (data[1]==\"1/2/2007\") | (data[1]==\"2/2/2007\")\n\n\n#Same as previous exercise <- I copied this comment as well!!\nSub_metering_1= data[,\"Sub_metering_1\"][goodDate]\nSub_metering_2= data[,\"Sub_metering_2\"][goodDate]\nSub_metering_3= data[,\"Sub_metering_3\"][goodDate]\n\nGlobal_active_power = as.numeric(data[,\"Global_active_power\"][goodDate]) #old\n\nVoltage = as.numeric(data[,\"Voltage\"][goodDate]) #New\n\nGlobal_reactive_power = as.numeric(data[,\"Global_reactive_power\"][goodDate]) #New\n\n\ntime = strptime(paste(data[,\"Date\"][goodDate], data[,\"Time\"][goodDate],sep=\"\") ,\"%d/%m/%Y%H:%M:%S\") #old\n\n#Some Variables above have been named such that labelling may later be avoided\n\n\n\nrm(data)\nrm(goodDate)\ngoodColors = c(\"black\",\"red\",\"blue\")\n\n\npng(filename=\"plot4.png\",width=480,height=480,units=\"px\")\n\n    par(mfrow=c(2,2)) #This statement is probably all there is to this exercise. Makes separate (consecutive) plots coexist...\n\n    plot(time,Global_active_power,col=\"black\",ylab=\"Global Active Power\",xlab=\"\",type=\"l\") #Slight Variations in the labelling\n    \n    plot(time,Voltage,col=\"black\",xlab=\"datetime\",type=\"l\") #New Function\n\n    plot(time,Sub_metering_1,col=goodColors[1],ylab=\"Energy sub metering\",xlab=\"\",type=\"l\")\n \n    lines(time,Sub_metering_2,col=goodColors[2])\n \n    lines(time,Sub_metering_3,col=goodColors[3])\n    \n    #various properties had to be changed for the legend so that it shrinks appropriately, doesn't have a border and does not overlap anything\n    legend(\"topright\", lty=1, col=goodColors, legend=c(\"Sub_metering_1\",\"Sub_metering_2\",\"Sub_metering_3\"),box.col = \"transparent\", bg=\"transparent\",cex=1)   \n    \n\n    plot(time,Global_reactive_power,col=\"black\",xlab=\"datetime\",type=\"l\") #the underscores have been \"intentionally\" left in the labelling. YOLO!\n\ndev.off()\n\n#One last time, eh?\nrm(list=ls())\n",
+    "created" : 1424009979619.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3561792350",
+    "id" : "FAD74CA0",
+    "lastKnownWriteTime" : 1423400910,
+    "path" : "C:/Data/Coursera/Current/Data_Science/Exploratory_Data_Analysis/Projects/Project1/ExData_Plotting1/plot4.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
